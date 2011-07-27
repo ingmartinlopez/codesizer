@@ -13,6 +13,7 @@ import com.devgear.codesizer.core.model.Foo;
 import com.devgear.codesizer.core.util.ApplicationHelper;
 import com.devgear.codesizer.core.util.BaseApplication;
 import com.devgear.codesizer.core.util.VaadinApplicationObjectSupport;
+import com.devgear.codesizer.core.view.MainLayout;
 import com.vaadin.terminal.ExternalResource;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
@@ -45,19 +46,20 @@ public class FooApplication extends BaseApplication implements ClickListener, Fo
 		}
 		VerticalLayout layout = new VerticalLayout();
 		Window mainWindow = new Window(app.getMessage("application.name"), layout);
-		Button logout = new Button(app.getMessage("button.logout"));
-		logout.setStyleName(Button.STYLE_LINK);
-		logout.addListener(this);
-		logout.setData(Buttons.LOGOUT);
-		mainWindow.addComponent(logout);
-		//try application helper, same as app.getMessage()
-		Button language = new Button(ApplicationHelper.getMessage("button.changelanguage"));
-		language.setStyleName(Button.STYLE_LINK);
-		language.addListener(this);
-		language.setData(Buttons.LANGUAGE);
-		mainWindow.addComponent(language);
-		mainWindow.addComponent(createForm());
-		mainWindow.addComponent(createTable());
+//		Button logout = new Button(app.getMessage("button.logout"));
+//		logout.setStyleName(Button.STYLE_LINK);
+//		logout.addListener(this);
+//		logout.setData(Buttons.LOGOUT);
+//		mainWindow.addComponent(logout);
+//		//try application helper, same as app.getMessage()
+//		Button language = new Button(ApplicationHelper.getMessage("button.changelanguage"));
+//		language.setStyleName(Button.STYLE_LINK);
+//		language.addListener(this);
+//		language.setData(Buttons.LANGUAGE);
+//		mainWindow.addComponent(language);
+//		mainWindow.addComponent(createForm());
+//		mainWindow.addComponent(createTable());
+		mainWindow.addComponent(new MainLayout());
 		setMainWindow(mainWindow);
 		if(logger.isDebugEnabled()) {
 			logger.debug("initialization done");
