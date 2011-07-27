@@ -35,7 +35,7 @@
 	</listener>
 	<servlet>
 		<servlet-name>CodeSizer Main Servlet</servlet-name>
-		<servlet-class>com.devgear.codesizer.core.servlet.SpringApplicationServlet</servlet-class>
+		<servlet-class>com.devgear.codesizer.core.util.servlet.SpringApplicationServlet</servlet-class>
 		<init-param>
 			<description>CodeSizer Main Servlet</description>
 			<param-name>applicationBean</param-name>
