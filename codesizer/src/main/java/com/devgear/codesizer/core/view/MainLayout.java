@@ -258,7 +258,7 @@ public class MainLayout extends CustomComponent {
 		// verticalToolbar_1
 		verticalToolbar_1 = new VerticalToolbar();
 		verticalToolbar_1.setImmediate(false);
-		verticalToolbar_1.setWidth("120px");
+		verticalToolbar_1.setWidth("85px");
 		verticalToolbar_1.setHeight("100.0%");
 		horizontalLayout_1.addComponent(verticalToolbar_1);
 		horizontalLayout_1.setComponentAlignment(verticalToolbar_1,
