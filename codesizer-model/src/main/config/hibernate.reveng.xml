@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<table-filter match-schema="public" match-name="activities" />
+	<table-filter match-schema="public" match-name="clients" />
+	<table-filter match-schema="public" match-name="extra_tasks" />
+	<table-filter match-schema="public" match-name="feature_types" />
+	<table-filter match-schema="public" match-name="groups" />
+	<table-filter match-schema="public" match-name="groups_roles" />
+	<table-filter match-schema="public" match-name="groups_users" />
+	<table-filter match-schema="public" match-name="languages" />
+	<table-filter match-schema="public" match-name="messages" />
+	<table-filter match-schema="public" match-name="modules" />
+	<table-filter match-schema="public" match-name="parameter_types" />
+	<table-filter match-schema="public" match-name="parameters" />
+	<table-filter match-schema="public"
+		match-name="project_extra_task_history" />
+	<table-filter match-schema="public"
+		match-name="project_extra_tasks" />
+	<table-filter match-schema="public" match-name="project_history" />
+	<table-filter match-schema="public" match-name="project_states" />
+	<table-filter match-schema="public"
+		match-name="project_type_activities" />
+	<table-filter match-schema="public"
+		match-name="project_type_extra_tasks" />
+	<table-filter match-schema="public"
+		match-name="project_type_feature_types" />
+	<table-filter match-schema="public"
+		match-name="project_type_parameter_types" />
+	<table-filter match-schema="public" match-name="project_types" />
+	<table-filter match-schema="public" match-name="projects" />
+	<table-filter match-schema="public" match-name="roles" />
+	<table-filter match-schema="public" match-name="roles_users" />
+	<table-filter match-schema="public" match-name="submodules" />
+	<table-filter match-schema="public" match-name="subsystems" />
+	<table-filter match-schema="public" match-name="t_activities" />
+	<table-filter match-schema="public" match-name="t_feature_types" />
+	<table-filter match-schema="public" match-name="t_parameter_types" />
+	<table-filter match-schema="public" match-name="t_parameters" />
+	<table-filter match-schema="public"
+		match-name="t_project_type_activities" />
+	<table-filter match-schema="public"
+		match-name="t_project_type_feature_types" />
+	<table-filter match-schema="public"
+		match-name="t_project_type_parameter_types" />
+	<table-filter match-schema="public" match-name="t_project_types" />
+	<table-filter match-schema="public" match-name="task_history" />
+	<table-filter match-schema="public" match-name="task_parameters" />
+	<table-filter match-schema="public"
+		match-name="task_parameters_history" />
+	<table-filter match-schema="public" match-name="tasks" />
+	<table-filter match-schema="public" match-name="users" />
+	<table schema="public" name="task_parameters" class="com.devgear.codesizer.model.TaskParameter"></table>
+	<table schema="public" name="task_history" class="com.devgear.codesizer.model.TaskHistory"></table>
+	<table schema="public" name="tasks" class="com.devgear.codesizer.model.Task"></table>
+	<table schema="public" name="feature_types" class="com.devgear.codesizer.model.FeatureType"></table>
+	<table schema="public" name="t_project_type_feature_types" class="com.devgear.codesizer.model.TemplateProjectTypeFeatureType"></table>
+	<table schema="public" name="task_parameters_history"></table>
+	<table schema="public" name="messages" class="com.devgear.codesizer.model.Message"></table>
+	<table schema="public" name="project_extra_tasks"></table>
+	<table schema="public" name="roles" class="com.devgear.codesizer.model.Role"></table>
+	<table schema="public" name="t_parameters" class="com.devgear.codesizer.model.TemplateParameter"></table>
+	<table schema="public" name="project_type_feature_types"></table>
+	<table schema="public" name="clients" class="com.devgear.codesizer.model.Client"></table>
+	<table schema="public" name="project_type_parameter_types"></table>
+	<table schema="public" name="users" class="com.devgear.codesizer.model.User"></table>
+	<table schema="public" name="t_project_types" class="com.devgear.codesizer.model.TemplateProjectType"></table>
+	<table schema="public" name="project_states"></table>
+	<table schema="public" name="modules" class="com.devgear.codesizer.model.Module"></table>
+	<table schema="public" name="roles_users"></table>
+	<table schema="public" name="groups_users"></table>
+	<table schema="public" name="t_parameter_types" class="com.devgear.codesizer.model.TemplateParameterType"></table>
+	<table schema="public" name="project_type_activities"></table>
+	<table schema="public" name="parameter_types" class="com.devgear.codesizer.model.ParameterType"></table>
+	<table schema="public" name="project_history" class="com.devgear.codesizer.model.ProjectHistory"></table>
+	<table schema="public" name="t_project_type_activities" class="com.devgear.codesizer.model.TemplateProjectTypeActivity"></table>
+	<table schema="public" name="t_project_type_parameter_types" class="com.devgear.codesizer.model.TemplateProjectTypeParameterType"></table>
+	<table schema="public" name="parameters" class="com.devgear.codesizer.model.Parameter"></table>
+	<table schema="public" name="projects" class="com.devgear.codesizer.model.Project"></table>
+	<table schema="public" name="project_extra_task_history"></table>
+	<table schema="public" name="t_activities" class="com.devgear.codesizer.model.TemplateActivity"></table>
+	<table schema="public" name="subsystems" catalog="" class="com.devgear.codesizer.model.Subsystem"></table>
+	<table schema="public" name="groups" class="com.devgear.codesizer.model.Group"></table>
+	<table schema="public" name="t_feature_types" class="com.devgear.codesizer.model.TemplateFeatureType"></table>
+	<table schema="public" name="activities" class="com.devgear.codesizer.model.Activity"></table>
+	<table schema="public" name="extra_tasks" class="com.devgear.codesizer.model.ExtraTask"></table>
+	<table schema="public" name="project_type_extra_tasks"></table>
+	<table schema="public" name="project_types" class="com.devgear.codesizer.model.ProjectType"></table>
+	<table schema="public" name="languages" class="com.devgear.codesizer.model.Language"></table>
+	<table schema="public" name="groups_roles"></table>
+	<table schema="public" name="submodules" class="com.devgear.codesizer.model.Submodule"></table>
+</hibernate-reverse-engineering>

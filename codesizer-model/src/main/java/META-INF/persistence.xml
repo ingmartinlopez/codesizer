@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="codesizer-model">
+		<class>com.devgear.codesizer.model.Activity</class>
+		<class>com.devgear.codesizer.model.Client</class>
+		<class>com.devgear.codesizer.model.ExtraTask</class>
+		<class>com.devgear.codesizer.model.FeatureType</class>
+		<class>com.devgear.codesizer.model.Group</class>
+		<class>com.devgear.codesizer.model.Language</class>
+		<class>com.devgear.codesizer.model.Message</class>
+		<class>com.devgear.codesizer.model.MessageId</class>
+		<class>com.devgear.codesizer.model.Module</class>
+		<class>com.devgear.codesizer.model.Parameter</class>
+		<class>com.devgear.codesizer.model.ParameterType</class>
+		<class>com.devgear.codesizer.model.Project</class>
+		<class>com.devgear.codesizer.model.ProjectExtraTaskHistory</class>
+		<class>com.devgear.codesizer.model.ProjectExtraTasks</class>
+		<class>com.devgear.codesizer.model.ProjectExtraTasksId</class>
+		<class>com.devgear.codesizer.model.ProjectHistory</class>
+		<class>com.devgear.codesizer.model.ProjectStates</class>
+		<class>com.devgear.codesizer.model.ProjectType</class>
+		<class>com.devgear.codesizer.model.ProjectTypeActivities</class>
+		<class>com.devgear.codesizer.model.ProjectTypeActivitiesId</class>
+		<class>com.devgear.codesizer.model.ProjectTypeFeatureTypes</class>
+		<class>com.devgear.codesizer.model.ProjectTypeFeatureTypesId</class>
+		<class>com.devgear.codesizer.model.Role</class>
+		<class>com.devgear.codesizer.model.Submodule</class>
+		<class>com.devgear.codesizer.model.Subsystems</class>
+		<class>com.devgear.codesizer.model.Task</class>
+		<class>com.devgear.codesizer.model.TaskHistory</class>
+		<class>com.devgear.codesizer.model.TaskParametersHistory</class>
+		<class>com.devgear.codesizer.model.TemplateActivity</class>
+		<class>com.devgear.codesizer.model.TemplateFeatureType</class>
+		<class>com.devgear.codesizer.model.TemplateParameter</class>
+		<class>com.devgear.codesizer.model.TemplateParameterType</class>
+		<class>com.devgear.codesizer.model.TemplateProjectType</class>
+		<class>com.devgear.codesizer.model.TemplateProjectTypeActivity</class>
+		<class>com.devgear.codesizer.model.TemplateProjectTypeActivityId</class>
+		<class>com.devgear.codesizer.model.TemplateProjectTypeFeatureType</class>
+		<class>com.devgear.codesizer.model.TemplateProjectTypeFeatureTypeId</class>
+		<class>com.devgear.codesizer.model.User</class>
+	</persistence-unit>
+</persistence>
