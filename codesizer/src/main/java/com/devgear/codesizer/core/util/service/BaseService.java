@@ -6,6 +6,8 @@ package com.devgear.codesizer.core.util.service;
 import java.io.Serializable;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.googlecode.genericdao.dao.jpa.GenericDAO;
 import com.googlecode.genericdao.search.ExampleOptions;
 import com.googlecode.genericdao.search.Filter;
@@ -14,16 +16,17 @@ import com.googlecode.genericdao.search.SearchResult;
 
 /**
  * @author mlopez
- *
+ * 
  */
-public abstract class BaseService<T, ID extends Serializable, Dao extends GenericDAO<T,ID>> implements IBaseService<T, ID, Dao> {
+public abstract class BaseService<T, ID extends Serializable, Dao extends GenericDAO<T, ID>> implements IBaseService<T, ID, Dao> {
 
-	protected GenericDAO<T,ID> genericDao;
-	
+	protected GenericDAO<T, ID> genericDao;
+
 	public GenericDAO<T, ID> getGenericDao() {
 		return genericDao;
 	}
 
+	@Autowired
 	public void setGenericDao(GenericDAO<T, ID> genericDao) {
 		this.genericDao = genericDao;
 	}
@@ -119,5 +122,5 @@ public abstract class BaseService<T, ID extends Serializable, Dao extends Generi
 	public Filter getFilterFromExample(T example, ExampleOptions options) {
 		return genericDao.getFilterFromExample(example, options);
 	}
-	
+
 }

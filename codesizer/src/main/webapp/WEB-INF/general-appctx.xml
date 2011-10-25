@@ -18,13 +18,6 @@
 	<!-- Turn on @Autowired, @PostConstruct etc support -->
 	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
 	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
-
-	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
-		<property name="driverClassName" value="${database.driverClassName}" />
-		<property name="url" value="${database.url}" />
-		<property name="username" value="${database.username}" />
-		<property name="password" value="${database.password}" />
-	</bean>
 	
 	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -33,7 +26,7 @@
 	<tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />
 	
 	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
-		<property name="dataSource" ref="dataSource" />
+		<property name="dataSource" ref="datasource" />
 		<property name="jpaVendorAdapter">
 			<bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="generateDdl" value="true" />
@@ -42,6 +35,8 @@
 		</property>
 	</bean>
 	
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
 		p:basename="Messages"/>
 		
@@ -49,5 +44,35 @@
 		p:defaultLocale="en_US"/>
 		
 	<bean class="com.devgear.codesizer.core.util.VaadinApplicationObjectSupport"/>
+	
+	
+	<!-- AOP Transactions -->
+	<tx:advice id="txAdvice_core" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- default access is read-only -->
+			<tx:method name="*" read-only="true" />
+
+			<tx:method name="save*" rollback-for="java.lang.Exception" read-only="false" />
+
+			<tx:method name="remove*" rollback-for="java.lang.Exception" read-only="false" />
+
+			<tx:method name="merge*" rollback-for="java.lang.Exception" read-only="false" />
+
+			<tx:method name="execute*" rollback-for="java.lang.Exception" read-only="false" />
+
+		</tx:attributes>
+	</tx:advice>
+
+	<!--
+		todos los metodos definidos sobre abstracciones que pertenezcan a
+		logios serán "aconsejados" mediante este bean (a partir de lo
+		especificado en txAdvice_logios)
+	-->
+	<aop:config>
+		<aop:pointcut id="corePointcut" expression="execution(* com.devgear.codesizer.core.service.*Service.*(..))" />
+
+		<aop:advisor advice-ref="txAdvice_core" pointcut-ref="corePointcut" />
+
+	</aop:config>	
 		
 </beans>
