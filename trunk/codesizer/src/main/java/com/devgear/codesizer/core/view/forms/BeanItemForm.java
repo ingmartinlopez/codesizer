@@ -12,27 +12,48 @@ import com.vaadin.ui.Form;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.Layout;
-import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
 
 public class BeanItemForm<T extends BuildableBeanItem<?>> extends Form {
 
 	private static final long serialVersionUID = -134463363910505697L;
 
+	private Button commit;
+
+	public Button getCommitButton() {
+		return commit;
+	}
+
+	public Button getRestoreButton() {
+		return restore;
+	}
+
+	private Button restore;
+
+	private Button showState;
+	
 	public BeanItemForm() {
 
 		// Enable buffering.
 		setWriteThrough(false);
 		setImmediate(true);
+		buildButtonBar();
+		
+
+		Layout footerLayout = getFooter();
+		if (footerLayout instanceof AbstractOrderedLayout)
+			((AbstractOrderedLayout) footerLayout).setSpacing(true);
+	}
+
+	protected void buildButtonBar() {
 		// The Ok button calls form.commit().
-		Button commit = new Button("Save", this, "commit");
+		commit = new Button("Save", this, "commit");
 
 		// The Restore button calls form.discard().
-		Button restore = new Button("Cancel", this, "discard");
+		restore = new Button("Cancel", this, "discard");
 
-		Button showState = new Button("Show Pojo State", new ClickListener() {
+		showState = new Button("Show Pojo State", new ClickListener() {
 
 			private static final long serialVersionUID = 472558219751562947L;
 
@@ -58,11 +79,6 @@ public class BeanItemForm<T extends BuildableBeanItem<?>> extends Form {
 		okbar.setComponentAlignment(commit, Alignment.MIDDLE_RIGHT);
 		okbar.setComponentAlignment(restore, Alignment.MIDDLE_RIGHT);
 		okbar.setComponentAlignment(showState, Alignment.MIDDLE_RIGHT);
-		
-
-		Layout footerLayout = getFooter();
-		if (footerLayout instanceof AbstractOrderedLayout)
-			((AbstractOrderedLayout) footerLayout).setSpacing(true);
 	}
 
 	@Override

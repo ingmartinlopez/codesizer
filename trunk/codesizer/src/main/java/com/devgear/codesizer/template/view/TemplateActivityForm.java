@@ -24,7 +24,7 @@ public class TemplateActivityForm extends BuildableBeanItem<TemplateActivity> {
 
 		getItemProperty(NAME).setDisplayName("Activity Name").setRequired(true)
 				.setPosition(0, 0);
-
+		
 	}
 
 }
