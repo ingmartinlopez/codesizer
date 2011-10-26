@@ -20,14 +20,14 @@ import com.googlecode.genericdao.search.SearchResult;
  */
 public abstract class BaseService<T, ID extends Serializable, Dao extends GenericDAO<T, ID>> implements IBaseService<T, ID, Dao> {
 
-	protected GenericDAO<T, ID> genericDao;
+	protected Dao genericDao;
 
-	public GenericDAO<T, ID> getGenericDao() {
+	public Dao getGenericDao() {
 		return genericDao;
 	}
 
 	@Autowired
-	public void setGenericDao(GenericDAO<T, ID> genericDao) {
+	public void setGenericDao(Dao genericDao) {
 		this.genericDao = genericDao;
 	}
 

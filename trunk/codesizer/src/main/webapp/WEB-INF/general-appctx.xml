@@ -64,9 +64,6 @@
 	</tx:advice>
 
 	<!--
-		todos los metodos definidos sobre abstracciones que pertenezcan a
-		logios serán "aconsejados" mediante este bean (a partir de lo
-		especificado en txAdvice_logios)
 	-->
 	<aop:config>
 		<aop:pointcut id="corePointcut" expression="execution(* com.devgear.codesizer.core.service.*Service.*(..))" />
