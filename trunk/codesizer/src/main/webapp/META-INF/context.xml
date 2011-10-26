@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context antiJARLocking="true" path="/codesizer"/>
+<Context antiJARLocking="true" path="/codesizer">
+		<ResourceLink name="jdbc/codesizer" global="jdbc/codesizer" type="javax.sql.DataSource"/>
+</Context>
