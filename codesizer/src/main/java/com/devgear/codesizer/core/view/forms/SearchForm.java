@@ -13,7 +13,7 @@ import com.vaadin.ui.HorizontalLayout;
  * @author mlopez
  * 
  */
-public abstract class SearchForm<T extends BuildableBeanItem<?>> extends BeanItemForm {
+public abstract class SearchForm<T extends BuildableBeanItem<?>> extends BeanItemForm<T> {
 
 	/**
 	 * 
@@ -67,6 +67,12 @@ public abstract class SearchForm<T extends BuildableBeanItem<?>> extends BeanIte
 	public abstract void newEntityClicked();
 
 	public abstract void searchClicked();
+	
+	@Override
+	public void discard() throws SourceException {
+		super.discard();
+		this.getApplication().removeWindow(getWindow());
+	}
 	
 	public Button getSearchButton() {
 		return searchButton;

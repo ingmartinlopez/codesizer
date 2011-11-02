@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:p="http://www.springframework.org/schema/p"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd            
 	                       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd           
@@ -13,64 +13,89 @@
 	<!-- Turn on AspectJ @Configurable support -->
 	<context:spring-configured />
 
-	<context:component-scan base-package="com.devgear.codesizer.core,com.devgear.codesizer.template" />
+	<context:component-scan
+		base-package="com.devgear.codesizer.core,com.devgear.codesizer.template" />
 
 	<!-- Turn on @Autowired, @PostConstruct etc support -->
-	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
-	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
-	
-	<bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+	<bean
+		class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<bean
+		class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+	<bean class="org.springframework.orm.jpa.JpaTransactionManager"
+		id="transactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-	
-	<tx:annotation-driven mode="aspectj" transaction-manager="transactionManager" />
-	
-	<bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+
+	<tx:annotation-driven mode="aspectj"
+		transaction-manager="transactionManager" />
+
+	<bean
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		id="entityManagerFactory">
 		<property name="dataSource" ref="datasource" />
 		<property name="jpaVendorAdapter">
-			<bean id="jpaAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+			<bean id="jpaAdapter"
+				class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="generateDdl" value="false" />
 				<property name="showSql" value="true" />
-				<property name="database" value="POSTGRESQL"/>
+				<property name="database" value="POSTGRESQL" />
 			</bean>
 		</property>
 	</bean>
-	
-	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-	
-	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-		p:basename="Messages"/>
-		
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"
-		p:defaultLocale="en_US"/>
-		
-	<bean class="com.devgear.codesizer.core.util.VaadinApplicationObjectSupport"/>
-	
-	
+
+	<bean
+		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+	<bean id="searchProcessor" class="com.googlecode.genericdao.search.jpa.JPASearchProcessor">
+		<constructor-arg ref="metadataUtil" />
+	</bean>
+
+	<bean id="metadataUtil"
+		class="com.googlecode.genericdao.search.jpa.hibernate.HibernateMetadataUtil"
+		factory-method="getInstanceForEntityManagerFactory">
+		<constructor-arg ref="entityManagerFactory" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:basename="Messages" />
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver"
+		p:defaultLocale="en_US" />
+
+	<bean class="com.devgear.codesizer.core.util.VaadinApplicationObjectSupport" />
+
+
 	<!-- AOP Transactions -->
 	<tx:advice id="txAdvice_core" transaction-manager="transactionManager">
 		<tx:attributes>
 			<!-- default access is read-only -->
 			<tx:method name="*" read-only="true" />
 
-			<tx:method name="save*" rollback-for="java.lang.Exception" read-only="false" />
+			<tx:method name="save*" rollback-for="java.lang.Exception"
+				read-only="false" />
 
-			<tx:method name="remove*" rollback-for="java.lang.Exception" read-only="false" />
+			<tx:method name="remove*" rollback-for="java.lang.Exception"
+				read-only="false" />
 
-			<tx:method name="merge*" rollback-for="java.lang.Exception" read-only="false" />
+			<tx:method name="merge*" rollback-for="java.lang.Exception"
+				read-only="false" />
 
-			<tx:method name="execute*" rollback-for="java.lang.Exception" read-only="false" />
+			<tx:method name="execute*" rollback-for="java.lang.Exception"
+				read-only="false" />
 
 		</tx:attributes>
 	</tx:advice>
 
-	<!--
-	-->
+	<!-- -->
 	<aop:config>
-		<aop:pointcut id="corePointcut" expression="execution(* com.devgear.codesizer.core.service.*Service.*(..))" />
+		<aop:pointcut id="corePointcut"
+			expression="execution(* com.devgear.codesizer.core.service.*Service.*(..))" />
 
 		<aop:advisor advice-ref="txAdvice_core" pointcut-ref="corePointcut" />
 
-	</aop:config>	
-		
+	</aop:config>
+
 </beans>
