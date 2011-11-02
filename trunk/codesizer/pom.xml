@@ -228,6 +228,11 @@
 			<artifactId>dao</artifactId>
 			<version>1.1.0</version>
 		</dependency>
+        <dependency>
+            <groupId>com.googlecode.genericdao</groupId>
+            <artifactId>search-jpa-hibernate</artifactId>
+			<version>1.1.0</version>
+        </dependency>
 		<dependency>
 			<groupId>com.devgear.codesizer</groupId>
 			<artifactId>codesizer-model</artifactId>
